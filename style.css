@@ -35,6 +35,7 @@ body::before {
   text-align: center;
   z-index: 10;
   position: relative;
+  overflow: hidden;
 }
 
 .search {
@@ -42,6 +43,7 @@ body::before {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-wrap: nowrap; /* Prevent wrapping */
 }
 
 .search input {
@@ -54,6 +56,7 @@ body::before {
   border-radius: 30px;
   flex: 1;
   font-size: 18px;
+  max-width: calc(100% - 80px); /* Prevent overflow from the button */
 }
 
 .search .bt1 {
@@ -68,11 +71,13 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0; /* Prevent shrinking */
+  position: relative; /* Ensure proper positioning */
 }
 
 .weather {
   margin-top: 20px;
-  display: block; /* Adjust to show by default */
+  display: block;
 }
 
 .weather-icon {
@@ -151,4 +156,63 @@ body::before {
   font-size: 16px;
   font-weight: bold;
   color: #fff;
+}
+
+/* Media Query for Phones */
+@media screen and (max-width: 768px) {
+  body {
+    align-items: flex-start; /* Align content to the top */
+    padding: 20px; /* Add padding around content */
+  }
+
+  .card {
+    width: 100%; /* Take full width on phones */
+    padding: 20px 15px; /* Reduce padding for smaller screens */
+  }
+
+  .search input {
+    height: 50px; /* Adjust height for smaller screens */
+    font-size: 16px; /* Reduce font size */
+  }
+
+  .search .bt1 {
+    width: 50px;
+    height: 50px;
+  }
+
+  .weather-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .weather h1 {
+    font-size: 36px; /* Adjust font size */
+  }
+
+  .weather h2 {
+    font-size: 18px;
+  }
+
+  .details .col {
+    gap: 5px; /* Reduce spacing */
+  }
+
+  .details .humidity-icon,
+  .details .wind-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .humidity,
+  .wind {
+    font-size: 12px;
+  }
+
+  .forcast-items {
+    width: 60px; /* Smaller forecast items */
+  }
+
+  .forcast-items-temp {
+    font-size: 14px;
+  }
 }
